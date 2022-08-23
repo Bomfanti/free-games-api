@@ -18,10 +18,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 
+
 import { ColorModeContext } from "../../themes/toggleColorMode";
 import Banner from "../Banner/Banner";
 import { mainListItems } from "../ListItems/ListItems";
 import GameCard from "../Card/GameCard";
+import GameCardSmall from "../GameCardSmall/GameCardSmall";
 
 const drawerWidth = 200;
 
@@ -69,17 +71,6 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-const greyTheme = createTheme({
-  palette: {
-    type: "light",
-    primary: {
-      main: "#37474f",
-    },
-    secondary: {
-      main: "#455a64",
-    },
-  },
-});
 
 const darkTheme = createTheme({ palette: { mode: "dark" } });
 const lightTheme = createTheme({ palette: { mode: "light" } });
@@ -98,7 +89,7 @@ function DashboardContent() {
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
-            pr: "24px", // keep right padding when drawer closed
+            pr: "24px", 
           }}
         >
           <IconButton
@@ -121,9 +112,21 @@ function DashboardContent() {
             sx={{ flexGrow: 1 }}
           >
             Free Games
-            <IconButton
+
+          </Typography>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            sx={{ flexGrow: 1 }}
+          >
+            Search
+
+          </Typography>
+          <IconButton
               color="inherit"
-              sx={{ ml: 150 }}
+              sx={{ ml: 1}}
               onClick={colorMode.toggleColorMode}
             >
               {theme.palette.mode === "dark" ? (
@@ -132,7 +135,6 @@ function DashboardContent() {
                 <Brightness4 />
               )}
             </IconButton>
-          </Typography>
           <IconButton color="inherit"></IconButton>
         </Toolbar>
       </AppBar>
@@ -152,7 +154,6 @@ function DashboardContent() {
         <Divider />
         <List component="nav">
           {mainListItems}
-
           <Divider sx={{ my: 1 }} />
         </List>
       </Drawer>
@@ -206,6 +207,22 @@ function DashboardContent() {
               </Paper>
             </Grid>
             
+          </Grid>
+
+          <Grid item xs={8} sx={{display: "flex", flexDirection: "row", flexWrap: "wrap"}} >
+                  <GameCardSmall
+                  title={'Overwatch'}
+                  subtitle={'What are you waiting?'}
+                  image={'https://images5.alphacoders.com/690/thumb-1920-690653.png'}
+                  />
+                
+              
+                  <GameCardSmall
+                  title={'Overwatch'}
+                  subtitle={'What are you waiting?'}
+                  image={'https://images5.alphacoders.com/690/thumb-1920-690653.png'}
+                  />
+                
           </Grid>
         </Container>
       </Box>

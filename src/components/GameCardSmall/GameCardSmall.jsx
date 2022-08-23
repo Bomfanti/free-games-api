@@ -4,15 +4,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-import {TotalArea, Content, Title, Subtitle} from './styles';
 
-export default function GameCard({ classes, image, title, subtitle }) {
+
+export default function GameCardSmall({ classes, image, title, subtitle }) {
   return (
-    <Card sx={{  margin:3, borderRadius:8}}>
+    <Card sx={{margin:3, marginTop:10}}>
       <CardMedia component="img"
-        height="140"
+        height="128"
         image={image}
-        sx={{minWidth: 400}}
+        sx={{minWidth: 128}}
         />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
