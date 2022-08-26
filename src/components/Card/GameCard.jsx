@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography';
 
 import {TotalArea, Content, Title, Subtitle} from './styles';
 
-export default function GameCard({ classes, image, title, subtitle }) {
+export default function GameCard({image, title, subtitle }) {
   return (
-    <Card sx={{  margin:3, borderRadius:8}}>
+    <Card sx={{margin:2}}>
       <CardMedia component="img"
         height="140"
         image={image}
@@ -18,9 +18,7 @@ export default function GameCard({ classes, image, title, subtitle }) {
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {subtitle}
-        </Typography>
+
       </CardContent>
     </Card>
   );

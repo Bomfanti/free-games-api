@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography';
 
 export default function GameCardSmall({ classes, image, title, subtitle }) {
   return (
-    <Card sx={{margin:3, marginTop:10}}>
+  
+    <Card sx={{margin:2, marginTop:5}}>
       <CardMedia component="img"
         height="128"
         image={image}
@@ -23,5 +24,6 @@ export default function GameCardSmall({ classes, image, title, subtitle }) {
         </Typography>
       </CardContent>
     </Card>
+ 
   );
 }

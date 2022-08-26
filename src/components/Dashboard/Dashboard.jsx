@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
+import { styled} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
@@ -15,6 +15,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import Input from '@mui/material/Input';
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 
@@ -72,8 +73,23 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 
-const darkTheme = createTheme({ palette: { mode: "dark" } });
-const lightTheme = createTheme({ palette: { mode: "light" } });
+const cards = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+];
+
+const games = {
+  game: {
+    title:'Fortnite',
+    subtitle:'Time to choose side!',
+    image:'https://images5.alphacoders.com/690/thumb-1920-690653.png'
+  },
+  game: {
+    title:'Fortnite',
+    subtitle:'Time to choose side!',
+    image:'https://images5.alphacoders.com/690/thumb-1920-690653.png'
+  }
+}
+
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
@@ -82,6 +98,7 @@ function DashboardContent() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -89,7 +106,7 @@ function DashboardContent() {
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
-            pr: "24px", 
+            pr: "24px", color: "#fff"
           }}
         >
           <IconButton
@@ -121,7 +138,7 @@ function DashboardContent() {
             noWrap
             sx={{ flexGrow: 1 }}
           >
-            Search
+            <Input placeholder="Pesquisar" />
 
           </Typography>
           <IconButton
@@ -173,20 +190,11 @@ function DashboardContent() {
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3} >
             <Grid item xs={12} >
-              <Paper
-                sx={{
-                  p: 2,
-                  display: "flex",
-                  flexDirection: "column",
-                  elevation: 24,
-                }}
-              >
-                <Banner />
-              </Paper>
+              <Banner />   
             </Grid>
 
-            <Grid item xs={12} >
-              <Paper sx={{ display: "flex", flexDirection: "row" }}>
+            <Grid item xs={12} sx={{ display: "flex", flexDirection: "row", alignItems: "center" }} >
+              
                 <GameCard 
                 title={'Fortnite'}
                 subtitle={'Time to choose side!'}
@@ -204,25 +212,30 @@ function DashboardContent() {
                 subtitle={'What are you waiting?'}
                 image={'https://images5.alphacoders.com/690/thumb-1920-690653.png'}
                 />
-              </Paper>
+             
+            </Grid>
+
+            <Grid container spacing={4}>
+                {cards.map((games)=>(
+                  <Grid item key={games} xs={12} sm={6} md={4}>
+                    <GameCard 
+                    title={games.title}
+                    image = {"https://progameguides.com/wp-content/uploads/2019/10/fortnite-outfit-scratch.jpg"}>
+                    </GameCard>
+                  </Grid>
+                ))}
             </Grid>
             
           </Grid>
 
-          <Grid item xs={8} sx={{display: "flex", flexDirection: "row", flexWrap: "wrap"}} >
+          <Grid item xs={12} sx={{display: "flex", flexDirection: "row", flexWrap: "wrap"}} >
+                  <Grid item xs={12}>
                   <GameCardSmall
                   title={'Overwatch'}
                   subtitle={'What are you waiting?'}
                   image={'https://images5.alphacoders.com/690/thumb-1920-690653.png'}
                   />
-                
-              
-                  <GameCardSmall
-                  title={'Overwatch'}
-                  subtitle={'What are you waiting?'}
-                  image={'https://images5.alphacoders.com/690/thumb-1920-690653.png'}
-                  />
-                
+                  </Grid>
           </Grid>
         </Container>
       </Box>
